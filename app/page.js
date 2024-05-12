@@ -46,11 +46,11 @@ const deleteHandler = (i)=>{
 <form onSubmit={submitHandler}>
 <input className='text-2xl border-zinc-800 border-2 px-4 py-2 m-5 rounded' placeholder='Enter your Task here'  type="text" value={task} onChange={(e)=>{
   setTask(e.target.value)
-}} />
+}} required/>
 <input className='text-2xl border-zinc-800 border-2 px-4 py-2 m-5 rounded' placeholder='Enter your Description here'   type="text" value={desc} onChange={(e)=>{
   setDesc(e.target.value)
-}} />
-<button className='rounded bg-green-800 text-white p-3' >Add Task</button>
+}} required/>
+<button className='rounded bg-green-800 text-white p-3 mx-1' >Add Task</button>
 </form>
 
 
