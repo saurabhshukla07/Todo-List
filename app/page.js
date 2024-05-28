@@ -1,11 +1,16 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const page = () => {
   const[task, setTask]=useState("");
   const[desc, setDesc]=useState("");
 
-  const[print, setPrint]=useState([]);
+  const[print, setPrint]=useState(JSON.parse(localStorage.getItem("print")) || []);
+      
+useEffect(()=>{
+localStorage.setItem("print",JSON.stringify(print))
+},[print])
+
    function submitHandler(e){
 e.preventDefault();
 
