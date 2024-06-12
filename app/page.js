@@ -2,14 +2,27 @@
 import React, { useEffect, useState } from 'react'
 
 const page = () => {
-  const[task, setTask]=useState("");
-  const[desc, setDesc]=useState("");
+    const [task, setTask] = useState("");
+    const [desc, setDesc] = useState("");
 
-  const[print, setPrint]=useState(JSON.parse(localStorage.getItem("print")) || []);
-      
-useEffect(()=>{
-localStorage.setItem("print",JSON.stringify(print))
-},[print])
+    const [print, setPrint] = useState([]);
+
+    useEffect(() => {
+
+        if (localStorage) {
+            const todos = JSON.parse(localStorage.getItem("print"))
+            console.log("todos", todos);
+            if (todos && todos.length > 0) {
+                setPrint(todos)
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        if (localStorage && print.length > 0) {
+            localStorage.setItem("print", JSON.stringify(print))
+        }
+    }, [print])
 
    function submitHandler(e){
 e.preventDefault();
